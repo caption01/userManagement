@@ -1,0 +1,37 @@
+import { userType } from './user.type'
+
+const INT_STATE = {
+    data: null,
+    edit: {}
+}
+
+
+const userReducer = (state=INT_STATE, action) => {
+
+    switch(action.type){
+
+        case(userType.SET_INITIAL_USER_DATE):
+            return {
+                ...state,
+                data: action.payload
+            }
+
+        case(userType.SET_EDIT_INFO_OBJ):
+            return {
+                ...state,
+                edit: action.payload
+            }
+        
+        case(userType.UPDATE_USER_DATA):
+            return {
+                ...state,
+                data: action.payload
+            }
+            
+
+        default:
+            return state
+    }
+}
+
+export default userReducer
