@@ -19,3 +19,8 @@ export const addNewUser = (data) => ({
     type: userType.ADD_NEW_USER,
     payload: data
 })
+
+export const deleteUser = (target) => ({
+    type: userType.DELETE_USER,
+    payload: target
+})

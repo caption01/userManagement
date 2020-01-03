@@ -3,7 +3,7 @@ import React from 'react'
 // redux
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { setIntialUserData, setEditUserObj, updateUserData, addNewUser } from '../redux/user/user.action'
+import { setIntialUserData, setEditUserObj, updateUserData, addNewUser, deleteUser } from '../redux/user/user.action'
 import { setActiveModal } from '../redux/modal/modal.action'
 
 // selector
@@ -39,6 +39,10 @@ class UserTable extends React.Component {
       })
     }
 
+    handleDeleteUser = (record) => {
+      this.props.deleteUser(record)
+    }
+
     componentDidMount = () => {
       this.props.setIntialUserData(userSeedData)
     }
@@ -68,7 +72,7 @@ class UserTable extends React.Component {
                 <span>
                   <a onClick={()=>this.handleModalSelect('modal_edit', record)} >Edit</a>
                   <Divider type="vertical" />
-                  <a>Delete</a>
+                  <a onClick={()=>this.handleDeleteUser(record)} >Delete</a>
                 </span>
               ),
             },
@@ -123,7 +127,8 @@ const mapDispatchToPtops = dispatch => ({
   setActiveModal: (status) => dispatch(setActiveModal(status)),
   setEditUserObj: (data) => dispatch(setEditUserObj(data)),
   updateUserData: (data) => dispatch(updateUserData(data)),
-  addNewUser: (data) => dispatch(addNewUser(data))
+  addNewUser: (data) => dispatch(addNewUser(data)),
+  deleteUser: (target) => dispatch(deleteUser(target))
 })
 
 

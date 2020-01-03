@@ -33,6 +33,12 @@ const userReducer = (state=INT_STATE, action) => {
                 ...state,
                 data: [...state.data, action.payload]
             }
+
+        case(userType.DELETE_USER):
+            return {
+                ...state,
+                data: state.data.filter(user => user.key!==action.payload.key ? user: false)
+            }
             
 
         default:
