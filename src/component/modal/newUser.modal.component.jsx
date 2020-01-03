@@ -20,7 +20,7 @@ class NewUserModal extends React.Component {
     handleOk = () => {
       this.setState({ loading: true });
       let newObject = {
-          key: `${this.props.userData.length + 1}`,
+          key: new Date().toISOString(),
           first_name: this.state.first_name,
           last_name: this.state.last_name,
           address: this.state.address
