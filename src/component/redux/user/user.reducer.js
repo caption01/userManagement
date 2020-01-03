@@ -27,6 +27,12 @@ const userReducer = (state=INT_STATE, action) => {
                 ...state,
                 data: action.payload
             }
+
+        case(userType.ADD_NEW_USER):
+            return {
+                ...state,
+                data: [...state.data, action.payload]
+            }
             
 
         default:

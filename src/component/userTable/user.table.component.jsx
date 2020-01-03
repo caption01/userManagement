@@ -3,7 +3,7 @@ import React from 'react'
 // redux
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { setIntialUserData, setEditUserObj, updateUserData } from '../redux/user/user.action'
+import { setIntialUserData, setEditUserObj, updateUserData, addNewUser } from '../redux/user/user.action'
 import { setActiveModal } from '../redux/modal/modal.action'
 
 // selector
@@ -18,6 +18,7 @@ import { userSeedData } from '../redux/user/user.data'
 
 // component
 import EditModal from '../modal/edit.modal.component'
+import NewUserModal from '../modal/newUser.modal.component'
 
 
 class UserTable extends React.Component {
@@ -89,11 +90,17 @@ class UserTable extends React.Component {
                   active={this.props.modalActive} 
                   setActiveModal={this.props.setActiveModal} 
                   userInfo={this.props.userEdit}
+                  setEditUserObj={this.props.setEditUserObj}
                   updateUserData={this.props.updateUserData}
                   userData={this.props.userData}
                 /> :
-                this.state.selected_modal === 'modal_newUser' ? 
-                <div>modal new user</div> :
+                this.state.selected_modal === 'modal_newUser' ?
+                <NewUserModal 
+                  active={this.props.modalActive} 
+                  setActiveModal={this.props.setActiveModal}
+                  userData={this.props.userData}
+                  addNewUser={this.props.addNewUser}
+                /> :
                 null
               }
               
@@ -115,7 +122,8 @@ const mapDispatchToPtops = dispatch => ({
   setIntialUserData: (data) => dispatch(setIntialUserData(data)),
   setActiveModal: (status) => dispatch(setActiveModal(status)),
   setEditUserObj: (data) => dispatch(setEditUserObj(data)),
-  updateUserData: (data) => dispatch(updateUserData(data))
+  updateUserData: (data) => dispatch(updateUserData(data)),
+  addNewUser: (data) => dispatch(addNewUser(data))
 })
 
 
