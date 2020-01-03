@@ -26,7 +26,6 @@ class UserTable extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-          selected_user_index: 1,
           selected_modal: ''
         }
     }
@@ -77,6 +76,8 @@ class UserTable extends React.Component {
               ),
             },
       ];
+
+      const { userData, modalActive, setActiveModal, userEdit, setEditUserObj, updateUserData, addNewUser } = this.props
           
       return (
 
@@ -85,25 +86,25 @@ class UserTable extends React.Component {
                 <Button type="primary" onClick={()=>this.handleModalSelect('modal_newUser')}>Add new User</Button>
               </div>
               <div className='user-table'>
-                <Table columns={columns} dataSource={this.props.userData} />
+                <Table columns={columns} dataSource={userData} />
               </div>
 
               {
                 this.state.selected_modal === 'modal_edit' ? 
                 <EditModal 
-                  active={this.props.modalActive} 
-                  setActiveModal={this.props.setActiveModal} 
-                  userInfo={this.props.userEdit}
-                  setEditUserObj={this.props.setEditUserObj}
-                  updateUserData={this.props.updateUserData}
-                  userData={this.props.userData}
+                  active={modalActive} 
+                  setActiveModal={setActiveModal} 
+                  userInfo={userEdit}
+                  setEditUserObj={setEditUserObj}
+                  updateUserData={updateUserData}
+                  userData={userData}
                 /> :
                 this.state.selected_modal === 'modal_newUser' ?
                 <NewUserModal 
-                  active={this.props.modalActive} 
-                  setActiveModal={this.props.setActiveModal}
-                  userData={this.props.userData}
-                  addNewUser={this.props.addNewUser}
+                  active={modalActive} 
+                  setActiveModal={setActiveModal}
+                  userData={userData}
+                  addNewUser={addNewUser}
                 /> :
                 null
               }

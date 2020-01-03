@@ -15,15 +15,18 @@ class EditModal extends React.Component {
     }
 
     handleOk = () => {
-      this.setState({ loading: true });
-      const userDataUpdate = this.props.userData.map(user => user.key === this.props.userInfo.key ? this.props.userInfo : user)
-      this.props.updateUserData(userDataUpdate)
-      setTimeout(() => {
-        this.setState({ loading: false}, 
-            ()=>{
-                this.props.setActiveModal(false)
-            });
-      }, 1000);
+
+        const {userData, userInfo, updateUserData, setActiveModal } = this.props
+
+        this.setState({ loading: true });
+        const userDataUpdate = userData.map(user => user.key === userInfo.key ? userInfo : user)
+        updateUserData(userDataUpdate)
+        setTimeout(() => {
+            this.setState({ loading: false}, 
+                ()=>{
+                    setActiveModal(false)
+                });
+        }, 1000);
     };
   
     handleCancel = () => {
@@ -31,15 +34,18 @@ class EditModal extends React.Component {
     };
 
     handleInputChange = (type, load) => {
+
+        const { setEditUserObj, userInfo} = this.props
+
         switch (type) {
             case 'first_name':
-                return this.props.setEditUserObj({...this.props.userInfo, first_name: load})
+                return setEditUserObj({...userInfo, first_name: load})
 
             case 'last_name':
-                return this.props.setEditUserObj({...this.props.userInfo, last_name: load})
+                return setEditUserObj({...userInfo, last_name: load})
 
             case 'address':
-                return this.props.setEditUserObj({...this.props.userInfo, address: load})
+                return setEditUserObj({...userInfo, address: load})
 
             default:
                 return true;
@@ -51,12 +57,12 @@ class EditModal extends React.Component {
 
         const { loading } = this.state;
 
-        console.log(this.props.userInfo)
+        const { active, userInfo, } = this.props
 
         return(
             <div className='edit-modal-container'>
                 <Modal
-                    visible={this.props.active}
+                    visible={active}
                     title="Edit User Infomation"
                     onOk={()=>this.handleOk()}
                     onCancel={()=>this.handleCancel()}
@@ -69,9 +75,9 @@ class EditModal extends React.Component {
                     </Button>,
                     ]}
                 >
-                    <p>First_Name : <Input value={this.props.userInfo.first_name} onChange={(e)=>this.handleInputChange('first_name',e.target.value)} allowClear={true} /> </p>
-                    <p>Last_Name : <Input value={this.props.userInfo.last_name} onChange={(e)=>this.handleInputChange('last_name', e.target.value)} allowClear={true} /> </p>
-                    <p>Address : <Input value={this.props.userInfo.address} onChange={(e)=>this.handleInputChange('address', e.target.value)} allowClear={true} /> </p>
+                    <p>First_Name : <Input value={userInfo.first_name} onChange={(e)=>this.handleInputChange('first_name',e.target.value)} allowClear={true} /> </p>
+                    <p>Last_Name : <Input value={userInfo.last_name} onChange={(e)=>this.handleInputChange('last_name', e.target.value)} allowClear={true} /> </p>
+                    <p>Address : <Input value={userInfo.address} onChange={(e)=>this.handleInputChange('address', e.target.value)} allowClear={true} /> </p>
                     
                 </Modal>
             </div>
