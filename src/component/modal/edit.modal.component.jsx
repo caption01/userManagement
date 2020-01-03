@@ -69,9 +69,9 @@ class EditModal extends React.Component {
                     </Button>,
                     ]}
                 >
-                    <p>First_Name : <Input placeholder={this.props.userInfo.first_name} onChange={(e)=>this.handleInputChange('first_name',e.target.value)} /> </p>
-                    <p>Last_Name : <Input placeholder={this.props.userInfo.last_name} onChange={(e)=>this.handleInputChange('last_name', e.target.value)} /> </p>
-                    <p>Address : <Input placeholder={this.props.userInfo.address} onChange={(e)=>this.handleInputChange('address', e.target.value)} /> </p>
+                    <p>First_Name : <Input value={this.props.userInfo.first_name} onChange={(e)=>this.handleInputChange('first_name',e.target.value)} allowClear={true} /> </p>
+                    <p>Last_Name : <Input value={this.props.userInfo.last_name} onChange={(e)=>this.handleInputChange('last_name', e.target.value)} allowClear={true} /> </p>
+                    <p>Address : <Input value={this.props.userInfo.address} onChange={(e)=>this.handleInputChange('address', e.target.value)} allowClear={true} /> </p>
                     
                 </Modal>
             </div>
