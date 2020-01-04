@@ -6,6 +6,11 @@ exports[`Testing UserTable component expect to render UserTable 1`] = `
 >
   <div
     className="user-table-add-button"
+    style={
+      Object {
+        "textAlign": "end",
+      }
+    }
   >
     <Button
       block={false}
@@ -46,6 +51,12 @@ exports[`Testing UserTable component expect to render UserTable 1`] = `
             "title": "Action",
           },
         ]
+      }
+      pagination={
+        Object {
+          "pageSize": "5",
+          "position": "bottom",
+        }
       }
     />
   </div>
