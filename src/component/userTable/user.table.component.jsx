@@ -64,11 +64,11 @@ class UserTable extends React.Component {
       return (
 
             <div className='user-table-container'>
-              <div className='user-table-add-button'>
+              <div className='user-table-add-button' style={{textAlign: 'end'}}>
                 <Button id='create-new-user-btn' type="primary" onClick={()=>this.handleModalSelect('modal_newUser')}>Add new User</Button>
               </div>
               <div className='user-table'>
-                <Table columns={columns} dataSource={userData} />
+                <Table pagination={{position: 'bottom', pageSize: '5'}} columns={columns} dataSource={userData} />
               </div>
 
               {
