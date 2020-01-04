@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing EditModal expect render EditModal 1`] = `
+<div
+  className="edit-modal-container"
+>
+  <Modal
+    confirmLoading={false}
+    footer={
+      Array [
+        <Button
+          block={false}
+          ghost={false}
+          htmlType="button"
+          loading={false}
+          onClick={[Function]}
+        >
+          Return
+        </Button>,
+        <Button
+          block={false}
+          ghost={false}
+          htmlType="button"
+          loading={false}
+          onClick={[Function]}
+          type="primary"
+        >
+          Submit
+        </Button>,
+      ]
+    }
+    maskTransitionName="fade"
+    okType="primary"
+    onCancel={[Function]}
+    onOk={[Function]}
+    title="Edit User Infomation"
+    transitionName="zoom"
+    visible={false}
+    width={520}
+  >
+    <p>
+      First_Name : 
+      <Input
+        allowClear={true}
+        id="inputfirstname"
+        onChange={[Function]}
+        type="text"
+        value="john"
+      />
+       
+    </p>
+    <p>
+      Last_Name : 
+      <Input
+        allowClear={true}
+        id="inputlastname"
+        onChange={[Function]}
+        type="text"
+        value="mayer"
+      />
+       
+    </p>
+    <p>
+      Address : 
+      <Input
+        allowClear={true}
+        id="inputaddress"
+        onChange={[Function]}
+        type="text"
+        value="USA"
+      />
+       
+    </p>
+  </Modal>
+</div>
+`;

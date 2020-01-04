@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing UserTable component expect to render UserTable 1`] = `
+<div
+  className="user-table-container"
+>
+  <div
+    className="user-table-add-button"
+  >
+    <Button
+      block={false}
+      ghost={false}
+      htmlType="button"
+      id="create-new-user-btn"
+      loading={false}
+      onClick={[Function]}
+      type="primary"
+    >
+      Add new User
+    </Button>
+  </div>
+  <div
+    className="user-table"
+  >
+    <withStore(Table)
+      columns={
+        Array [
+          Object {
+            "dataIndex": "first_name",
+            "key": "name",
+            "title": "First Name",
+          },
+          Object {
+            "dataIndex": "last_name",
+            "key": "age",
+            "title": "Last Name",
+          },
+          Object {
+            "dataIndex": "address",
+            "key": "address",
+            "title": "Address",
+          },
+          Object {
+            "key": "action",
+            "render": [Function],
+            "title": "Action",
+          },
+        ]
+      }
+    />
+  </div>
+</div>
+`;

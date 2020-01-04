@@ -2,14 +2,14 @@ import React from 'react';
 
 
 // component
-import UserTable from './component/userTable/user.table.component'
+import MainPage from './component/page/MainPage'
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <UserTable />
+      <MainPage />
     </div>
   );
 }

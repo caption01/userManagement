@@ -18,15 +18,23 @@ class EditModal extends React.Component {
 
         const {userData, userInfo, updateUserData, setActiveModal } = this.props
 
-        this.setState({ loading: true });
-        const userDataUpdate = userData.map(user => user.key === userInfo.key ? userInfo : user)
-        updateUserData(userDataUpdate)
-        setTimeout(() => {
-            this.setState({ loading: false}, 
-                ()=>{
-                    setActiveModal(false)
-                });
-        }, 1000);
+        const { first_name, last_name, address} = userInfo
+
+        if (first_name === '' || last_name === '' || address === ''){
+            return alert('please full fill infomation')  
+        } else {
+            this.setState({ loading: true });
+            const userDataUpdate = userData.map(user => user.key === userInfo.key ? userInfo : user)
+            updateUserData(userDataUpdate)
+            setTimeout(() => {
+                this.setState({ loading: false}, 
+                    ()=>{
+                        setActiveModal(false)
+                    });
+            }, 1000);
+        }
+
+        
     };
   
     handleCancel = () => {
@@ -75,9 +83,9 @@ class EditModal extends React.Component {
                     </Button>,
                     ]}
                 >
-                    <p>First_Name : <Input value={userInfo.first_name} onChange={(e)=>this.handleInputChange('first_name',e.target.value)} allowClear={true} /> </p>
-                    <p>Last_Name : <Input value={userInfo.last_name} onChange={(e)=>this.handleInputChange('last_name', e.target.value)} allowClear={true} /> </p>
-                    <p>Address : <Input value={userInfo.address} onChange={(e)=>this.handleInputChange('address', e.target.value)} allowClear={true} /> </p>
+                    <p>First_Name : <Input id="inputfirstname" value={userInfo.first_name} onChange={(e)=>this.handleInputChange('first_name',e.target.value)} allowClear={true} /> </p>
+                    <p>Last_Name : <Input id="inputlastname" value={userInfo.last_name} onChange={(e)=>this.handleInputChange('last_name', e.target.value)} allowClear={true} /> </p>
+                    <p>Address : <Input id="inputaddress" value={userInfo.address} onChange={(e)=>this.handleInputChange('address', e.target.value)} allowClear={true} /> </p>
                     
                 </Modal>
             </div>

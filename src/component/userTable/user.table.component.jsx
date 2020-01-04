@@ -1,25 +1,11 @@
 import React from 'react'
 
-// redux
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
-import { setIntialUserData, setEditUserObj, updateUserData, addNewUser, deleteUser } from '../redux/user/user.action'
-import { setActiveModal } from '../redux/modal/modal.action'
-
-// selector
-import { selectUserData, selectUserEditObject } from '../redux/user/user.selector'
-import { selectModalStatus } from '../redux/modal/modal.selector'
-
 // ant-design
 import { Table, Divider, Button } from 'antd';
-
-// seed-user-data
-import { userSeedData } from '../redux/user/user.data'
 
 // component
 import EditModal from '../modal/edit.modal.component'
 import NewUserModal from '../modal/newUser.modal.component'
-
 
 class UserTable extends React.Component {
 
@@ -40,10 +26,6 @@ class UserTable extends React.Component {
 
     handleDeleteUser = (record) => {
       this.props.deleteUser(record)
-    }
-
-    componentDidMount = () => {
-      this.props.setIntialUserData(userSeedData)
     }
 
     render() {
@@ -69,9 +51,9 @@ class UserTable extends React.Component {
               key: 'action',
               render: (text, record) => (
                 <span>
-                  <a onClick={()=>this.handleModalSelect('modal_edit', record)} >Edit</a>
+                  <a id='edit-user-btn' onClick={()=>this.handleModalSelect('modal_edit', record)} >Edit</a>
                   <Divider type="vertical" />
-                  <a onClick={()=>this.handleDeleteUser(record)} >Delete</a>
+                  <a onClick={()=>this.handleDeleteUser(record)} >Delete </a>
                 </span>
               ),
             },
@@ -83,7 +65,7 @@ class UserTable extends React.Component {
 
             <div className='user-table-container'>
               <div className='user-table-add-button'>
-                <Button type="primary" onClick={()=>this.handleModalSelect('modal_newUser')}>Add new User</Button>
+                <Button id='create-new-user-btn' type="primary" onClick={()=>this.handleModalSelect('modal_newUser')}>Add new User</Button>
               </div>
               <div className='user-table'>
                 <Table columns={columns} dataSource={userData} />
@@ -108,29 +90,10 @@ class UserTable extends React.Component {
                 /> :
                 null
               }
-              
-
 
             </div>
       )
     }
 }
 
-
-const mapStateToProps = createStructuredSelector({
-  userData: selectUserData,
-  modalActive: selectModalStatus,
-  userEdit: selectUserEditObject
-})
-
-const mapDispatchToPtops = dispatch => ({
-  setIntialUserData: (data) => dispatch(setIntialUserData(data)),
-  setActiveModal: (status) => dispatch(setActiveModal(status)),
-  setEditUserObj: (data) => dispatch(setEditUserObj(data)),
-  updateUserData: (data) => dispatch(updateUserData(data)),
-  addNewUser: (data) => dispatch(addNewUser(data)),
-  deleteUser: (target) => dispatch(deleteUser(target))
-})
-
-
-export default connect(mapStateToProps, mapDispatchToPtops)(UserTable)
+export default UserTable

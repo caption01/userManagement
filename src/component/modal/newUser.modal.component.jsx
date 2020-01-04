@@ -21,25 +21,29 @@ class NewUserModal extends React.Component {
         const { first_name, last_name, address } = this.state
         const { addNewUser, setActiveModal } = this.props
 
-        this.setState({ loading: true });
-        let newObject = {
-            key: new Date().toISOString(),
-            first_name: first_name,
-            last_name: last_name,
-            address: address
-        }
-        addNewUser(newObject)
-        setTimeout(() => {
-            this.setState({ loading: false}, 
-                ()=>{
-                    setActiveModal(false)
-                    this.setState({
-                        first_name: '',
-                        last_name: '',
-                        address: ''
-                    })
-                });
-        }, 1000);
+        if (first_name === '' || last_name === '' || address === ''){
+            return alert('please full fill infomation')  
+        } else {
+            this.setState({ loading: true });
+            let newObject = {
+                key: new Date().toISOString(),
+                first_name: first_name,
+                last_name: last_name,
+                address: address
+            }
+            addNewUser(newObject)
+            setTimeout(() => {
+                this.setState({ loading: false}, 
+                    ()=>{
+                        setActiveModal(false)
+                        this.setState({
+                            first_name: '',
+                            last_name: '',
+                            address: ''
+                        })
+                    });
+            }, 1000);
+        }    
     };
   
     handleCancel = () => {
@@ -67,9 +71,9 @@ class NewUserModal extends React.Component {
                     </Button>,
                     ]}
                 >
-                    <p>First_Name : <Input value={first_name} placeholder="insert your first name" onChange={(e)=>this.setState({first_name: e.target.value})} allowClear={true} /> </p>
-                    <p>Last_Name : <Input value={last_name} placeholder="insert your last name" onChange={(e)=>this.setState({last_name: e.target.value})} allowClear={true} /> </p>
-                    <p>Address : <Input value={address} placeholder="insert your address" onChange={(e)=>this.setState({address: e.target.value})} allowClear={true} /> </p>
+                    <p>First_Name : <Input id="inputfirstname" value={first_name} placeholder="insert your first name" onChange={(e)=>this.setState({first_name: e.target.value})} allowClear={true} /> </p>
+                    <p>Last_Name : <Input id="inputlastname" value={last_name} placeholder="insert your last name" onChange={(e)=>this.setState({last_name: e.target.value})} allowClear={true} /> </p>
+                    <p>Address : <Input id="inputaddress" value={address} placeholder="insert your address" onChange={(e)=>this.setState({address: e.target.value})} allowClear={true} /> </p>
                 </Modal>
             </div>
         )

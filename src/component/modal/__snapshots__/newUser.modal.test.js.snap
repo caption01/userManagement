@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing NewUserModal expect render newUserModal 1`] = `
+<div
+  className="edit-modal-container"
+>
+  <Modal
+    confirmLoading={false}
+    footer={
+      Array [
+        <Button
+          block={false}
+          ghost={false}
+          htmlType="button"
+          loading={false}
+          onClick={[Function]}
+        >
+          Return
+        </Button>,
+        <Button
+          block={false}
+          ghost={false}
+          htmlType="button"
+          loading={false}
+          onClick={[Function]}
+          type="primary"
+        >
+          Submit
+        </Button>,
+      ]
+    }
+    maskTransitionName="fade"
+    okType="primary"
+    onCancel={[Function]}
+    onOk={[Function]}
+    title="Add New User"
+    transitionName="zoom"
+    visible={false}
+    width={520}
+  >
+    <p>
+      First_Name : 
+      <Input
+        allowClear={true}
+        id="inputfirstname"
+        onChange={[Function]}
+        placeholder="insert your first name"
+        type="text"
+        value=""
+      />
+       
+    </p>
+    <p>
+      Last_Name : 
+      <Input
+        allowClear={true}
+        id="inputlastname"
+        onChange={[Function]}
+        placeholder="insert your last name"
+        type="text"
+        value=""
+      />
+       
+    </p>
+    <p>
+      Address : 
+      <Input
+        allowClear={true}
+        id="inputaddress"
+        onChange={[Function]}
+        placeholder="insert your address"
+        type="text"
+        value=""
+      />
+       
+    </p>
+  </Modal>
+</div>
+`;
